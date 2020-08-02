@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="bg_b">
+        <div class="pst">
+            您当前的位置：
+            <a href="{% url 'app:index' %}">首页</a> >
+            <a href="{% url 'app:news' %}l">新闻中心</a> >
+            <a href="{% url 'app:news' %}?type={{ object.type }}">{{ object.get_type_display }}</a>
+        </div>
+    </div>
+    <div class="scd clearfix">
+        <div class="scd_l">
+            <div class="l_name">
+                <img alt="" src="{% static 'images/name_1.png' %}"/>
+                <i>&nbsp;</i>
+            </div>
+            <ul class="s_nav">
+                <li {% if object.type == 0 %}class="on"{% endif %}>
+                    <a href="{% url 'app:news' %}">公司新闻</a>
+                </li>
+                <li {% if object.type == 1 %}class="on"{% endif %}>
+                    <a href="{% url 'app:news' %}?type=1">行业新闻</a>
+                </li>
+            </ul>
+        </div>
+        <div class="scd_r">
+            <div class="r_top"><span>新闻中心</span></div>
+            <div class="scd_m clearfix">
+                <div class="pro_d">
+                    <h2>{{ object.title }}</h2>
+                    <p>发布时间：{{ object.create_time.ctime}}</p>
+                    <div class="ctn clearfix">
+                        <p align="center"><img alt="" src="{% static 'upload/pic4.jpg' %}"></p>
+                        {{ object.content }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

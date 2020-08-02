@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="bg_b">
+        <div class="pst">
+            您当前的位置：<a href="{% url 'app:index' %}">首页</a> > <a href="{% url 'app:team' %}">设计团队</a>
+        </div>
+    </div>
+    <div class="scd clearfix">
+        <div class="scd_l">
+            <div class="l_name">
+                <img src="{% static 'images/name_2.png' %}"/>
+                <i>&nbsp;</i>
+            </div>
+            <ul class="s_nav">
+
+                <li>
+                    <a href="{% url 'app:about' %}">企业介绍</a>
+                </li>
+                <li class="on">
+                    <a href="{% url 'app:team' %}">精英团队</a>
+                </li>
+
+                <li>
+                    <a href="{% url 'app:contact' %}">联系我们</a>
+                </li>
+
+            </ul>
+        </div>
+        <div class="scd_r">
+            <div class="r_top"><span>精英团队</span></div>
+            <div class="scd_m">
+                {% for object in object_list %}
+                <dl class="news clearfix">
+                    <dt><a href=""><img src="/{{ object.avatar.url }}" alt=""/></a></dt>
+                    <dd>
+                        <div class="title">
+                            <p><a href="">{{ object.name }}</a></p>
+                            <span>{{ object.create_time }}</span>
+                        </div>
+                        <div class="des">
+                            {{ object.desc }}
+                        </div>
+{#                        <div class="more"><a href="case_info.html">查看详情>></a></div>#}
+                    </dd>
+                </dl>
+                {% endfor %}
+                <div class="space_hx">&nbsp;</div>
+                <div class="pages">
+                   {% if page_obj.has_previous %}
+                        <a href="{% url 'app:team' %}?page={{ page_obj.previous_page_number }}">上一页</a>
+                    {% endif %}
+
+                    {% if page_obj.has_next %}
+                        <a href="{% url 'app:team' %}?page={{ page_obj.next_page_number }}">下一页</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

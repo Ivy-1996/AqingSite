@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <!--幻灯片-->
+    <div class="bg_b">
+        <div class="pst">
+            您当前的位置：
+            <a href="index.html">首页</a> >
+            <a href="about.html">关于我们</a> >
+            <a href="contact.html">联系我们</a>
+        </div>
+    </div>
+    <div class="scd clearfix">
+        <div class="scd_l">
+            <div class="l_name">
+                <img src="{% static 'images/name_2.png' %}"/>
+                <i>&nbsp;</i>
+            </div>
+            <ul class="s_nav">
+
+                <li>
+                    <a href="{% url 'app:about' %}">企业介绍</a>
+                </li>
+                <li>
+                    <a href="{% url 'app:team' %}">精英团队</a>
+                </li>
+
+                <li class="on">
+                    <a href="{% url 'app:contact' %}">联系我们</a>
+                </li>
+
+            </ul>
+        </div>
+        <div class="scd_r">
+            <div class="r_top"><span>联系我们</span></div>
+            <div class="scd_m">
+                <dl class="contact clearfix">
+                    <dt><img src="{% static 'images/pic5.jpg' %}" alt=""></dt>
+                    <dd>
+                        <h1>{{ company_info.name }}</h1>
+                        <p><span>地址：</span>{{ company_info.location }}</p>
+                        <p><span>移动电话：</span>{{ company_info.mobile }}</p>
+                        <p><span>固定电话：</span>{{ company_info.phone_num }}</p>
+                        <p><span>联系邮箱：</span>{{ company_info.email }}</p>
+                        <p><span>联系微信：</span>{{ company_info.wechat }}</p>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+{% endblock %}

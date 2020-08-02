@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="bg_b">
+        <div class="pst">
+            您当前的位置：<a href="index.html">首页</a> > <a href="{% url 'app:recruitment' %}">人才招聘</a>
+        </div>
+    </div>
+    <div class="scd clearfix">
+        <div class="scd_l">
+            <div class="l_name">
+                <img alt="" src="{% static 'images/name_7.png' %}"/>
+                <i>&nbsp;</i>
+            </div>
+            <ul class="s_nav">
+                <li class="on">
+                    <a href="{% url 'app:recruitment' %}">人才招聘</a>
+                </li>
+            </ul>
+        </div>
+        <div class="scd_r">
+            <div class="r_top"><span>人才招聘</span></div>
+            <div class="scd_m">
+                <ul class="list">
+                    {% for object in object_list %}
+                        <li><a href="{% url 'app:recruitment-detail' object.pk %}">{{ object.title }}</a></li>
+                    {% endfor %}
+                </ul>
+                <div class="space_hx">&nbsp;</div>
+                <div class="pages">
+                    {% if page_obj.has_previous %}
+                        <a href="{% url 'app:recruitment' %}?page={{ page_obj.previous_page_number }}">上一页</a>
+                    {% endif %}
+
+                    {% if page_obj.has_next %}
+                        <a href="{% url 'app:recruitment' %}?page={{ page_obj.next_page_number }}">下一页</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

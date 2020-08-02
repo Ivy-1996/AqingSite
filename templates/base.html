@@ -1,0 +1,97 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+    <meta name="viewport" content="width=1200,user-scalable=yes">
+    <title>{% block title %}title{% endblock %}</title>
+    <script type="text/javascript" src="{% static 'js/jquery-1.8.3.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/js_z.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/banner.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/reset.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/thems.css' %}">
+
+</head>
+
+<body>
+<!--头部-->
+<div class="head clearfix">
+    <div class="logo">
+        <a href="{% url 'app:index' %}"><img src="/{{ company_info.logo.url }}" alt=""/></a>
+    </div>
+    <div class="phone clearfix">
+        <p>联系电话：<span>{{ company_info.phone_num }}</span></p>
+    </div>
+
+    <ul class="nav clearfix">
+
+        <li {% if active == "index" %} class="now" {% endif %}>
+            <a href="{% url 'app:index' %}">
+                <em>公司首页</em> HOME
+            </a>
+        </li>
+
+
+        <li {% if active == "case" %} class="now" {% endif %}>
+            <a href="{% url 'app:case' %}">
+                <em>合作案例</em> CASE
+            </a>
+        </li>
+
+
+        <li {% if active == "news" %} class="now" {% endif %}>
+            <a href="{% url 'app:news' %}">
+                <em>新闻中心</em> NEWS
+            </a>
+        </li>
+        <li {% if active == "recruitment" %} class="now" {% endif %}>
+            <a href="{% url 'app:recruitment' %}">
+                <em>人才招聘</em> Recruitment
+            </a>
+        </li>
+        <li{% if active == "about" %} class="now" {% endif %}>
+            <a href="{% url 'app:about' %}">
+                <em>关于我们</em> ABOUT US
+            </a>
+        </li>
+    </ul>
+</div>
+<!--头部-->
+<!--幻灯片-->
+<div id="banner" class="banner">
+    <div id="owl-demo" class="owl-carousel">
+        {% for banner in banners %}
+            <img src="/{{ banner.image.url }}" alt="" class="item">
+        {% endfor %}
+    </div>
+</div>
+
+
+{% block content %}
+{% endblock %}
+
+<div class="space_hx">&nbsp;</div>
+<div class="f_bg">
+    <div class="ftnav">
+        <ul>
+            <li><a href="{% url 'app:index' %}">网站首页</a></li>
+            <li><a href="{% url 'app:case' %}">合作案例</a></li>
+            <li><a href="{% url 'app:news' %}">新闻中心</a></li>
+            <li><a href="{% url 'app:recruitment' %}">人才招聘</a></li>
+            <li><a href="{% url 'app:about' %}">关于我们</a></li>
+        </ul>
+        <div class="clearfix"></div>
+    </div>
+
+    <div class="line">&nbsp;</div>
+    <div class="foot clearfix">
+        <div class="f_r">
+            版权所有©装修有限公司&emsp;苏ICP备12345678号
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

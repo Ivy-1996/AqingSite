@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <!--幻灯片-->
+    <div class="bg_b">
+        <div class="pst">您当前的位置：
+            <a href="{% url 'app:index' %}">首页</a> >
+            <a href="{% url 'app:case' %}">合作案例</a>>
+            <a href="{% url 'app:case-detail' object.pk %}">{{ object.get_type_display }}</a>
+        </div>
+    </div>
+    <div class="scd clearfix">
+        <div class="scd_l">
+            <div class="l_name">
+                <img src="{% static 'images/name_6.png' %}" width="164" height="48" alt=""/>
+                <i>&nbsp;</i>
+            </div>
+            <ul class="s_nav">
+                <li {% if object.type == 0 %}class="on"{% endif %}>
+                    <a href="{% url 'app:case' %}?type=0">家装案例</a>
+                </li>
+                <li {% if object.type == 1 %}class="on"{% endif %}>
+                    <a href="{% url 'app:case' %}?type=1">工装案例</a>
+                </li>
+                <li {% if object.type == 2 %}class="on"{% endif %}>
+                    <a href="{% url 'app:case' %}?type=2">其他案例</a>
+                </li>
+            </ul>
+        </div>
+        <div class="scd_r">
+            <div class="r_top"><span>{{ object.get_type_display }}</span></div>
+            <div class="scd_m clearfix">
+                <div class="pro_d">
+                    <h2>{{ object.title }}</h2>
+                    <p>{{ object.create_time }}</p>
+                    <div class="ctn clearfix">
+                        <p align="center"><img alt="" src="{{ object.image.url }}"></p>
+                        {{ object.content }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
