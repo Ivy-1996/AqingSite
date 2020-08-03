@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
+{% block title %}招聘中心{% endblock %}
 {% load static %}
 
 {% block content %}
     <div class="bg_b">
         <div class="pst">
-            您当前的位置：<a href="index.html">首页</a> > <a href="{% url 'app:recruitment' %}">人才招聘</a>
+            您当前的位置：<a href="{% url 'app:index' %}">首页</a> > <a href="{% url 'app:recruitment' %}">人才招聘</a>
         </div>
     </div>
     <div class="scd clearfix">

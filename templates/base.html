@@ -6,6 +6,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
     <meta name="viewport" content="width=1200,user-scalable=yes">
+    <link rel="shortcut icon" href="{% static 'auggm-890vz-001.ico' %}" type="image/x-icon"/>
     <title>{% block title %}title{% endblock %}</title>
     <script type="text/javascript" src="{% static 'js/jquery-1.8.3.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/js_z.js' %}"></script>
@@ -19,7 +20,7 @@
 <!--头部-->
 <div class="head clearfix">
     <div class="logo">
-        <a href="{% url 'app:index' %}"><img src="/{{ company_info.logo.url }}" alt=""/></a>
+        <a href="{% url 'app:index' %}"><img src="{{ company_info.logo.url }}" alt=""/></a>
     </div>
     <div class="phone clearfix">
         <p>联系电话：<span>{{ company_info.phone_num }}</span></p>
@@ -63,7 +64,7 @@
 <div id="banner" class="banner">
     <div id="owl-demo" class="owl-carousel">
         {% for banner in banners %}
-            <img src="/{{ banner.image.url }}" alt="" class="item">
+            <img src="{{ banner.image.url }}" alt="" class="item">
         {% endfor %}
     </div>
 </div>

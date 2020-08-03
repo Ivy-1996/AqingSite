@@ -44,7 +44,7 @@ class RecruitmentView(BaseView, ListView):
 
 
 class RecruitmentDetailView(BaseView, DetailView):
-    template_name = 'zhaopin.html'
+    template_name = 'zhaopin_info.html'
     model = models.Recruitment
 
 

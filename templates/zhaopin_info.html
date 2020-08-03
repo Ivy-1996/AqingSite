@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <!--幻灯片-->
+    <div class="bg_b">
+        <div class="pst">
+            您当前的位置：<a href="index.html">首页</a> > <a href="zhaopin.html">人才招聘</a>
+        </div>
+    </div>
+    <div class="scd clearfix">
+        <div class="scd_l">
+            <div class="l_name">
+                <img alt="" src="{% static 'images/name_7.png' %}"/>
+                <i>&nbsp;</i>
+            </div>
+            <ul class="s_nav">
+                <li class="on">
+                    <a href="{% url 'app:recruitment' %}">人才招聘</a>
+                </li>
+            </ul>
+        </div>
+        <div class="scd_r">
+            <div class="r_top"><span>人才招聘</span></div>
+            <div class="scd_m clearfix">
+                <div class="pro_d">
+                    <h2>{{ object.title}}</h2>
+                    <p>发布时间：{{ object.create_time }}</p>
+                    <div class="ctn clearfix">
+                        {{ object.content|safe }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
